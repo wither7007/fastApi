@@ -1,0 +1,76 @@
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> aab32f159582, New Migration
+Traceback (most recent call last):
+  File "/home/steff007/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/steff007/.local/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: table "articles" does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/steff007/.local/bin/alembic", line 8, in <module>
+    sys.exit(main())
+  File "/home/steff007/.local/lib/python3.10/site-packages/alembic/config.py", line 632, in main
+    CommandLine(prog=prog).main(argv=argv)
+  File "/home/steff007/.local/lib/python3.10/site-packages/alembic/config.py", line 626, in main
+    self.run_cmd(cfg, options)
+  File "/home/steff007/.local/lib/python3.10/site-packages/alembic/config.py", line 603, in run_cmd
+    fn(
+  File "/home/steff007/.local/lib/python3.10/site-packages/alembic/command.py", line 385, in upgrade
+    script.run_env()
+  File "/home/steff007/.local/lib/python3.10/site-packages/alembic/script/base.py", line 582, in run_env
+    util.load_python_file(self.dir, "env.py")
+  File "/home/steff007/.local/lib/python3.10/site-packages/alembic/util/pyfiles.py", line 94, in load_python_file
+    module = load_module_py(module_id, path)
+  File "/home/steff007/.local/lib/python3.10/site-packages/alembic/util/pyfiles.py", line 110, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/mnt/c/projects/junk/mAPI/alembic/env.py", line 92, in <module>
+    run_migrations_online()
+  File "/mnt/c/projects/junk/mAPI/alembic/env.py", line 86, in run_migrations_online
+    context.run_migrations()
+  File "<string>", line 8, in run_migrations
+  File "/home/steff007/.local/lib/python3.10/site-packages/alembic/runtime/environment.py", line 928, in run_migrations
+    self.get_context().run_migrations(**kw)
+  File "/home/steff007/.local/lib/python3.10/site-packages/alembic/runtime/migration.py", line 628, in run_migrations
+    step.migration_fn(**kw)
+  File "/mnt/c/projects/junk/mAPI/alembic/versions/aab32f159582_new_migration.py", line 40, in upgrade
+    op.drop_table('articles')
+  File "<string>", line 8, in drop_table
+  File "<string>", line 3, in drop_table
+  File "/home/steff007/.local/lib/python3.10/site-packages/alembic/operations/ops.py", line 1374, in drop_table
+    operations.invoke(op)
+  File "/home/steff007/.local/lib/python3.10/site-packages/alembic/operations/base.py", line 395, in invoke
+    return fn(self, operation)
+  File "/home/steff007/.local/lib/python3.10/site-packages/alembic/operations/toimpl.py", line 79, in drop_table
+    operations.impl.drop_table(
+  File "/home/steff007/.local/lib/python3.10/site-packages/alembic/ddl/impl.py", line 377, in drop_table
+    self._exec(schema.DropTable(table))
+  File "/home/steff007/.local/lib/python3.10/site-packages/alembic/ddl/impl.py", line 193, in _exec
+    return conn.execute(  # type: ignore[call-overload]
+  File "/home/steff007/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1412, in execute
+    return meth(
+  File "/home/steff007/.local/lib/python3.10/site-packages/sqlalchemy/sql/ddl.py", line 181, in _execute_on_connection
+    return connection._execute_ddl(
+  File "/home/steff007/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1524, in _execute_ddl
+    ret = self._execute_context(
+  File "/home/steff007/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1844, in _execute_context
+    return self._exec_single_context(
+  File "/home/steff007/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1984, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/steff007/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2339, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/steff007/.local/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/steff007/.local/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) table "articles" does not exist
+
+[SQL: 
+DROP TABLE articles]
+(Background on this error at: https://sqlalche.me/e/20/f405)
